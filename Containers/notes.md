@@ -24,4 +24,17 @@ What happens when we reun docker container run
 6. Opens up port 80 on host and forwards to port 80 in container
 7. Starts contianer by using the CMD in the image Dockerfile
 
+docker container inspect //gives metadata about the containers
+docker container stats // live update on resources the container is used
 
+docker container run -it // -i (interactive) and -t (tty) flags
+
+docker container exec -it mysql bash //executes on an existing image
+
+docker container inspect --format '{{ .NetworkSettings.IPAddress }}'
+
+Networks
+docker network create my_app_net
+docker container run -d --name new_nginx --network my_app_net // adds it to the my_app_net network
+
+docker container connect NETWORK_ID CONTAINER_ID 
