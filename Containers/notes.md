@@ -37,4 +37,9 @@ Networks
 docker network create my_app_net
 docker container run -d --name new_nginx --network my_app_net // adds it to the my_app_net network
 
-docker container connect NETWORK_ID CONTAINER_ID 
+docker container connect NETWORK_ID CONTAINER_ID
+
+containers shouldn't rely on IP's for inter-communication
+creating a network allows your containers to use DNS and rely on their container names
+
+--rm //automatically remvoes the container when it exists
