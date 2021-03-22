@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  proxy:
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
+    ports:
+      - '80:80'
+  web:
+    image: httpd
+    volumes:
+      - ./html:/usr/local/apache2/htdocs/
+
+# need to run docker-compose --build since this was based off of the previous example where the proxy image was already created
