@@ -67,3 +67,26 @@ docker stack deploy -c example-voting-app-stack.yml voteapp
 docker stack services voteapp
 
 docker stack ps voteapp
+
+Secrets Storage
+What is a secret
+-   usernames and passwords
+- TLS certificates and keys
+- SSH Keys
+- any data you would prefer not be on front page news
+Only stored on disk on Manager nodes
+Default is Managers and Workers "control plane" is TLS + Mutual Auth
+Secrets are first stored in Swarm then assigned to a Service
+Only containers in assigned Service can see them
+They look like files in container but are actually in-memory fs
+    /run/secrets/secret_name //key value store, key is the file name, value is what is in the file
+docker-compose cli should never be used in production, not secure as far as secrets go. 
+Secrets are a swarm only thing. docker-compose as a workaround for local development
+
+vim psql_user.txt
+
+docker secret create psql_user psql_user.txt
+echo "myDBpassWORD" | docker secret create psql_pass - ABOVE_ID
+
+docker service update --secret-rm
+When removing a secret the container will be redeployed. Secret is part of the immutable design of services. Not ideal for databases
