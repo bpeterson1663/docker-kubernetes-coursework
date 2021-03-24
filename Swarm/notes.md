@@ -54,3 +54,16 @@ Two ways this works
     - Docker Enterprise Edition, which comes with built-in L4 web proxy
 docker service create --name search --replicas 3 -p 9200:9200 elasticsearch:2
 
+Stacks
+- Compose files as their declarative definition for services, networks, and volumes
+- We use docker stack deploy rather then docker service create
+- Stacks manages all those objects for us, including overlay network per stack. Adds stack name to start of their name
+- New deploy: key in Compose file. Can't do build. Shouldnt build in production
+- Compose now ignores deploy:, Swarm ignores build: 
+- docker-compose cli not needed on Swarm server
+
+docker stack deploy -c example-voting-app-stack.yml voteapp
+
+docker stack services voteapp
+
+docker stack ps voteapp
