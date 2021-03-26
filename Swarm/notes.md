@@ -94,3 +94,28 @@ When removing a secret the container will be redeployed. Secret is part of the i
 Using secrets in local development with docker compose
 - use a bind mount with the secret file (only file based secrets)
 - this is not secure but works great for local development
+
+Full App Lifecycle With Compose
+Override file - docker-compose.override.yml
+    - This file will override any settings in the docker-compose.yml file when runnnig docker compose up. docker.compose.yml will get picked up first then will run the docker-compose.override.yml file
+Use -f to specify a file, base file needs to be first then the override file
+
+Service Updates:
+    Provides rolling replacement of tasks/containers in a service
+    Limits downtime (be careful with "prevents" downtime)
+    Will replace containers for most changes
+    Has many, many cli options to control the update
+    Create options will usually change, adding -add or -rm to them
+    Includes rollback and healthchoptions
+    Also has scale and rollback subcommand for quicker access
+    A stack deploy, when pre-existing, will issue service updates
+
+docker service create -p 8080:80 --name web nginx:1.13.7
+
+docker service scale web=5
+
+docker service update --image nginx:1.13.6 web //updating to an older version
+
+docker service update --publish-rm 8088 --publish-add 9090:80 web
+
+docker service update --force web
