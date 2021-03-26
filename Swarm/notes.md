@@ -90,3 +90,7 @@ echo "myDBpassWORD" | docker secret create psql_pass - ABOVE_ID
 
 docker service update --secret-rm
 When removing a secret the container will be redeployed. Secret is part of the immutable design of services. Not ideal for databases
+
+Using secrets in local development with docker compose
+- use a bind mount with the secret file (only file based secrets)
+- this is not secure but works great for local development
