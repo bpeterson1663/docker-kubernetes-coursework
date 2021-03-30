@@ -23,3 +23,12 @@ Kubernetes vs Swarm
 - Kubernetes: Widest adoption and community
 - Kubernetes: Flexible - covers widest set of use cases
 - Kubernetes: vendor support
+
+Terms
+- Kubectl: CLI to configure Kubernetes and manage apps
+    - Using "cube control" official pronunciation
+- Node: Single server in the Kubernetes cluster
+- Kublet: Kubernetes agent running on nodes
+- Control Plane: Set of containers that manage the cluster
+    - Includes API server, scheduler, controller manager, etcd and more
+    - Sometimes calle the maseter
