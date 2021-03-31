@@ -32,3 +32,19 @@ Terms
 - Control Plane: Set of containers that manage the cluster
     - Includes API server, scheduler, controller manager, etcd and more
     - Sometimes calle the maseter
+- Pod: one or more containers running together on one Node
+    - Basic unit of deployment. COntainers are always in pods
+- Controller: For creating/updating pods and other objects
+    - Many types of Controllers inc. Deployment, ReplicaSet, StatefulSet, DaemonSet, Job, CronJob, etc. 
+- Service: network endpoint to connect to a pod
+- Namespace: Filtered group of objects in cluster
+
+kubectl run (changing to be only for pod creation)
+kubectl create (create some resources via CLI or YAML)
+kubectl apply (create/update anyting via YAML)
+
+kubectl run my-nginx --image nginx
+
+kubectl get pods
+
+kubectl logs deployment/my-apache
