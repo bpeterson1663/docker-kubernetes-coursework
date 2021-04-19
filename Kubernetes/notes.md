@@ -87,3 +87,30 @@ kubectl expose deployment/httpenv --port 8888 --name httpenv-np --type NodePort
 kubectl expose deployment/httpenv --port 8888 --name httpenv-lb --type LoadBalancer
 
 --dry-run -o yaml //outputs what the command would do in a yamls file. useful for testing.  
+
+Imperative vs Declarative
+- Imperative: Focus on how a program operates
+- Declarative: Focus on what a program should accomplish
+
+Imperative
+- Examples: kubectl run, kubectl create deployment, kubectl update
+    - we start with a state we know
+    - we ask kubectl run to create a deployment
+- Different commands are required to change that deployment
+- Different commands are required to change that deployment
+- Different commands are required per object
+Imperative is easier when you know the state
+- Imperative is easier to get started
+- Imperative is easier for humans at the CLI
+- Imperative is NOT easy to automate
+
+Declarative
+- Examples: kubectl apply -f my-resources.yaml
+    - We don't know the current state
+    - We only know what we want the end result to be (yaml contents)
+- Same command each time (exception for delete)
+- Resources can be all in a file,k or many files (apply a whole dir)
+- Requires understanding the YAML keys and values
+- More work than kubectl run for just starting a pod
+- The easiest way to automate
+- The eventual path to Git happiness
