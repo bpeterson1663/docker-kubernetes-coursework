@@ -73,3 +73,16 @@ Exposing Containers
     - External Name
         - Adds CNAME DNS record to CoreDNS only
         - Not used for Pods, but for giving pods a DNS name to use for something outside Kubernetes
+
+kubectl create deployment httpenv --image=bretfisher/httpenv
+
+kubectl scale deployment/httpenv --replicas=5
+
+kubectl expose deployment/htpenv --port 8888
+
+kubectl run --generator run-pod/v1 tmp-shell --rm -it --image bretfisher/netshoot -- bash
+
+kubectl expose deployment/httpenv --port 8888 --name httpenv-np --type NodePort
+
+kubectl expose deployment/httpenv --port 8888 --name httpenv-lb --type LoadBalancer
+
