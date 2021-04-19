@@ -86,3 +86,4 @@ kubectl expose deployment/httpenv --port 8888 --name httpenv-np --type NodePort
 
 kubectl expose deployment/httpenv --port 8888 --name httpenv-lb --type LoadBalancer
 
+--dry-run -o yaml //outputs what the command would do in a yamls file. useful for testing.  
