@@ -114,3 +114,39 @@ Declarative
 - More work than kubectl run for just starting a pod
 - The easiest way to automate
 - The eventual path to Git happiness
+
+Storage in Kubernetes
+- Storage and stateful workloads are harder in all systems
+- Containers make it both harder nad easier than before
+- StatefulSets is a new resource type, making Pods more sticky
+- Use db-as-a-service whenever you can
+
+Volumes in Kubernetes
+- Volumes
+    - Tied to lifecycle of Pod
+    - All containers in a single Pod can share them
+- Persistent Volumes
+    - Created at the cluster level, outlives a Pod
+    - Separates storage config from Pod using it
+    - Multiple Pods can share them
+- CSI plugins are the new way to connect to storage (Container Storage Interface)
+
+- Ingress
+    - None of our Services types work at OSI Layer 7 (HTTP)
+    - How do we route outside connections based on hostname or URL?
+    - Ingress Controllers (optional) do this with 3rd party proxies
+    - Nginx is popular, but Traefik, HAProxy, F5, Envoy, Istio, etc
+
+CRD's and The Operator Pattern
+- You can add 3rd party resources and controllers
+- This extends Kubernetes API and CLI
+- A pattern is starting to emerge of using these together
+- Operator: automate deployment and management of complex apps
+- Examples: Databases, monitoring tools, backups, and cusotm ingresses
+
+Higher Deployment Abstractions
+- All our kubectl commands just talk to the Kubernetes API
+- Kubernetes has limited built-in templating, versioning, tracking and management of your apps
+- There are now over 60 3rd party tools to do that, but many are defunct
+- Helm is the most popular
+- Compose on Kubernetes comes with Docker Desktop
